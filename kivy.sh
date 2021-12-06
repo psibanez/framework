@@ -1,0 +1,1 @@
+https://kivy.org/doc/master/installation/installation-rpi.html
