@@ -30,7 +30,7 @@ sudo make install
 ############################################################ 2 - OPENVINO #############################################################################################################################
 ## installation OPENVINO (Intel stick2)
 cd ~/workspace
-git clone --depth 1 --branch 2021.3 https://github.com/openvinotoolkit/openvino.git
+git clone --depth 1 --branch 2021.4.2 https://github.com/openvinotoolkit/openvino.git
 
 cd openvino
 git submodule update --init --recursive
@@ -60,6 +60,10 @@ auto scale_node = std::make_shared<ngraph::op::v1::Multiply>(ieInpNode, weight, 
 # modifier:  /home/pi/workspace/opencv/modules/dnn/src/layers/normalize_bbox_layer.cpp ligne 358 v0->v1
 # modifier: /home/pi/workspace/opencv/modules/dnn/src/layers/scale_layer.cpp ligne 317 v0->v1
 
+git clone https://github.com/openvinotoolkit/openvino.git --branch=2021.4.2
+cd openvinogit submodule update --init --recursive
+
+ sudo apt install patchelf # for wheel
 
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release \
@@ -69,13 +73,15 @@ cmake -DCMAKE_BUILD_TYPE=Release \
 -DENABLE_GNA=OFF \
 -DENABLE_SSE42=OFF \
 -DTHREADING=SEQ \
--DENABLE_OPENCV=OFF \
+-DENABLE_OPENCV=ON \
+-DENABLE_WHEEL=ON \
 -DNGRAPH_PYTHON_BUILD_ENABLE=ON \
 -DNGRAPH_ONNX_IMPORT_ENABLE=ON \
 -DENABLE_PYTHON=ON \
 -DPYTHON_EXECUTABLE=$(which python3.8) \
 -DPYTHON_LIBRARY=/usr/lib/aarch64-linux-gnu/libpython3.8.so \
 -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
+-DENABLE_SPEECH_DEMO=ON \
 -DCMAKE_CXX_FLAGS=-latomic ..
 make -j4
 sudo make install

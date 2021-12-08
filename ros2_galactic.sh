@@ -66,8 +66,11 @@ colcon build --symlink-install --base-paths vision_opencv
 #########################ROS2 INTEL#########################################
 https://github.com/rdkit/rdkit/issues/3913
 https://github.com/IntelRealSense/realsense-ros/releases/tag/3.2.2 <-realsense
-https://github.com/intel/ros2_openvino_toolkit/blob/master/doc/getting_started_with_Galactic_Ubuntu20.04.md
-mkdir -p ~/my_ros2_ws/src
+https://github.com/intel/ros2_openvino_toolkit/blob/master/doc/getting_started_with_Galactic_Ubuntu20.04.md <------------------
+
+
+
+mkdir -p ~/workspace/my_ros2_ws/src
 cd ~/my_ros2_ws/src
 git clone https://github.com/intel/ros2_openvino_toolkit -b dev-ov.2021.4
 git clone https://github.com/intel/ros2_object_msgs
@@ -77,7 +80,8 @@ source ./install/local_setup.bash
 
 https://github.com/intel/ros2_openvino_toolkit/blob/master/doc/getting_started_with_Galactic.md
 
-
+cd /opt/intel/<INSTALL_DIR>/deployment_tools/open_model_zoo/tools/downloader
+sudo python3 downloader.py --name face-detection-adas-0001 --output_dir /opt/openvino_toolkit/models/face_detection/output
 
 
 git clone https://github.com/boostorg/boost.git
